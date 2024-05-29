@@ -1079,6 +1079,7 @@
                 toggleItems.forEach(function (item) {
                     var header = item.querySelector('.togle-heade');
                     var body = item.querySelector('.togle-body');
+                    var icon = header.querySelector('.toggleButton'); // 아이콘 엘리먼트를 찾습니다.
                     var isClicked = false; // 클릭 상태를 추적하는 변수
 
                     function openItem() {
@@ -1086,19 +1087,32 @@
                             if (otherItem !== item) {
                                 otherItem.classList.remove('active');
                                 var otherHeader = otherItem.querySelector('.togle-heade');
+                                var otherIcon = otherHeader.querySelector('.toggleButton');
                                 if (otherHeader) {
                                     otherHeader.classList.remove('active');
+                                }
+                                if (otherIcon) {
+                                    otherIcon.classList.remove('minus');
+                                    otherIcon.classList.add('plus');
                                 }
                             }
                         });
 
                         item.classList.add('active');
                         header.classList.add('active');
+                        if (icon) {
+                            icon.classList.remove('plus');
+                            icon.classList.add('minus');
+                        }
                     }
 
                     function closeItem() {
                         item.classList.remove('active');
                         header.classList.remove('active');
+                        if (icon) {
+                            icon.classList.remove('minus');
+                            icon.classList.add('plus');
+                        }
                     }
 
                     // 해상도가 1024px 이상일 때 이벤트 리스너 추가
@@ -1136,6 +1150,7 @@
                     // 해상도가 1024px 이하로 변경될 때 이벤트 리스너 제거
                     toggleItems.forEach(function (item) {
                         var header = item.querySelector('.togle-heade');
+                        var icon = header.querySelector('.toggleButton');
                         item.removeEventListener('mouseleave', closeItem);
                         header.removeEventListener('mouseenter', openItem);
                         header.removeEventListener('click', function () {
@@ -1148,6 +1163,12 @@
                                 item.addEventListener('mouseleave', closeItem);
                             }
                         });
+
+                        // 뷰포트 크기 변경 시 아이콘 상태 초기화
+                        if (icon) {
+                            icon.classList.remove('minus');
+                            icon.classList.add('plus');
+                        }
                     });
                 }
             });
