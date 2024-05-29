@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="393" height="673" viewBox="0 0 393 673">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_3990" data-name="사각형 3990" width="393" height="673" transform="translate(-20404 -11016)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="main_section3_obj6_m" transform="translate(20404 11016)" clip-path="url(#clip-path)">
+    <g id="그룹_6329" data-name="그룹 6329">
+      <text id="포워더" transform="translate(-20141.4 -10587.905)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-23.335" y="0">포워더</tspan></text>
+      <text id="항공운송사" transform="translate(-20069.4 -10834.021)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-38.892" y="0">항공운송사</tspan></text>
+      <text id="수출입_기업" data-name="수출입 기업" transform="translate(-20244.4 -10542.021)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-41.15" y="0">수출입 기업</tspan></text>
+      <text id="철도" transform="translate(-20052.4 -10784.521)" fill="#fff" font-size="14" font-family="Pretendard-Regular, Pretendard"><tspan x="-12.1" y="0">철도</tspan></text>
+      <text id="컨테이너선" transform="translate(-20313.4 -10650.021)" fill="#fff" font-size="14" font-family="Pretendard-Regular, Pretendard"><tspan x="-30.249" y="0">컨테이너선</tspan></text>
+      <text id="인증기관" transform="translate(-20222.4 -10829.021)" fill="#fff" font-size="14" font-family="Pretendard-Regular, Pretendard"><tspan x="-24.199" y="0">인증기관</tspan></text>
+      <text id="검사기관" transform="translate(-20227.4 -10426.136)" fill="#fff" font-size="14" font-family="Pretendard-Regular, Pretendard"><tspan x="-24.199" y="0">검사기관</tspan></text>
+      <text id="창고업체" transform="translate(-20313.4 -10426.136)" fill="#fff" font-size="14" font-family="Pretendard-Regular, Pretendard"><tspan x="-24.199" y="0">창고업체</tspan></text>
+      <text id="관세사" transform="translate(-20271.4 -10948.905)" fill="#fff" font-size="14" font-family="Pretendard-Regular, Pretendard"><tspan x="-18.149" y="0">관세사</tspan></text>
+    </g>
+  </g>
+</svg>

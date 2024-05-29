@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1400" viewBox="0 0 1920 1400">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_3714" data-name="사각형 3714" width="1920" height="1400" transform="translate(-17182 -14166)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="main_section3_obj7" transform="translate(17182 14166)" clip-path="url(#clip-path)">
+    <g id="그룹_5739" data-name="그룹 5739">
+      <text id="보험사" transform="translate(-16662.4 -13618.864)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-23.335" y="0">보험사</tspan></text>
+      <text id="화주" transform="translate(-16856.4 -13657.864)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-15.557" y="0">화주</tspan></text>
+      <text id="컨테이너선" transform="translate(-16927.4 -13471.864)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-38.892" y="0">컨테이너선</tspan></text>
+      <text id="터미널_운영사" data-name="터미널 운영사" transform="translate(-16988.4 -13209.864)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-48.929" y="0">터미널 운영사</tspan></text>
+      <text id="선사_항공사" data-name="선사/항공사" transform="translate(-16743.4 -13257.864)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-41.897" y="0">선사/항공사</tspan></text>
+      <text id="내륙운송사" transform="translate(-15429.4 -13165.864)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-38.892" y="0">내륙운송사</tspan></text>
+      <text id="선사" transform="translate(-15503.4 -13785.864)" fill="#fff" font-size="18" font-family="Pretendard-Regular, Pretendard"><tspan x="-15.557" y="0">선사</tspan></text>
+    </g>
+  </g>
+</svg>
