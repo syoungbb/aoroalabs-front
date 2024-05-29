@@ -22,15 +22,14 @@
     <script src="/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
-    
 </head>
 
 <body>
     <div id="wrap">
-    
+
         <header id="header" class="main-header main"></header>
 
-        <main id="main" class="main intro-main" >
+        <main id="main" class="main intro-main">
 
             <!-- 팝업 -->
             <div class="pop-parent" id="popParent">
@@ -45,30 +44,284 @@
                                 </div>
                             </a>
                         </div>
-            
+
                         <div class="swiper-control">
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
-                    <div class="pop-btns">
+                    <!-- <div class="pop-btns">
                         <input type="checkbox" name="oneday" id="oneday_check">
                         <label for="oneday_check">
-                            <!-- 오늘하루 기능 X, 화면에서 사라짐. -->
                             <span class="icon"></span> 오늘하루 보지 않기
                         </label>
             
                         <button class="btn-toggle">
-                            <!-- 옆으로 밀어 사라짐. 화살표 버튼 유지. -->
+                            <img src="/images/pop-arrow.png" class="icon">
+                        </button>
+                    </div> -->
+
+                    <div class="pop-btns">
+                        <input type="checkbox" name="oneday" id="oneday_check" onclick="closeToday()">
+                        <label for="oneday_check">
+                            오늘하루 보지 않기
+                        </label>
+
+                        <button class="btn-toggle">
                             <img src="/images/pop-arrow.png" class="icon">
                         </button>
                     </div>
+
                 </div>
             </div>
             <!-- //팝업 -->
 
+            <!-- 쿠키팝업 -->
+            <div class="popup cookiPopup cookiPopupDefault" id="popup">
+                <div class="popup-content">
+                    <i class="xi-close close-btn"></i>
+                    <p>
+                        ㈜아로아랩스는 당사 웹 사이트의 방문자에게 <br class="mb">
+                        최적의 서비스를 제공하기 위해 쿠키를 사용합니다. <br>
+                        사이트를 계속 탐색하시면
+                        쿠키 사용에 동의하게 됩니다. <br>
+                        쿠키의 자세한 정보에 대해서는 <br class="mb"> <a class="point" href="/privacy.html">개인정보 보호처리방침</a>을 확인해주시기
+                        바랍니다.
+                    </p>
+                    <div class="btn-wrap">
+                        <button class="allow-btn set-btn">쿠키 설정하기</button>
+                        <button class="allow-btn all-btn" id="allBtn">모든 쿠키 허용</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ---------- 설정하기 팝업 -->
+            <div class="popup setPopup cookiPopupDefault" id="setPopup" style="display:none;">
+                <div class="popup-content">
+                    <p class="set-title">쿠키 설정</p>
+                    <div class="scroll-wrap">
+                        <div class="in-wrap">
+                            <div class="set-sub">
+                                <p class="mb12">
+                                    (주)아로아랩스.(이하 ‘회사')는 아로아랩스 홈페이지(이하 ‘홈페이지')에서 쿠키를 사용합니다.
+                                    필수 쿠키를 제외하고 회사가 고객으로부터 수집하는 쿠키에 대해서 개별 동의가 필요합니다.
+                                </p>
+                                <p class="mb12">
+                                    홈페이지를 방문하시면 쿠키의 형태로 이용자의 브라우저에 정보를 저장하거나 브라우저에서 정보를 가져오고 있습니다.
+                                    이러한 정보는 방문자의 기본 설정 또는 방문자가 사용하는 기기에 관한 것이며, 대부분 사이트가
+                                    정상적으로 작동하도록 하기 위해 사용됩니다. 이러한 정보로 방문자를 직접 식별할수는 없으며,
+                                    방문자에게 더 최적화된 경험을 제공하는데 사용됩니다.
+                                </p>
+                                <p class="mb12">
+                                    홈페이지를 방문하시면 쿠키의 형태로 이용자의 브라우저에 정보를 저장하거나 브라우저에서 정보를 가져오고 있습니다.
+                                    이러한 정보는 방문자의 기본 설정 또는 방문자가 사용하는 기기에 관한 것이며, 대부분 사이트가
+                                    정상적으로 작동하도록 하기 위해 사용됩니다. 이러한 정보로 방문자를 직접 식별할수는 없으며,
+                                    방문자에게 더 최적화된 경험을 제공하는데 사용됩니다.
+                                </p>
+
+                            </div>
+                            <div class="set-box">
+                                <div class="chk-wrap">
+                                    <p class="box-title">필수 쿠키</p>
+                                    <label for="check_1" class="checked-item">
+                                        <input type="checkbox" id="check_1" class="form-checkbox">
+                                        <span class="check-icon">
+                                            <i class="xi-check"></i>
+                                        </span>
+                                        <p class="check-title">[필수]</p>
+                                    </label>
+                                </div>
+                                <p class="box-info">
+                                    사이트의 모든 기능을 사용하기 위해 꼭 필요한 쿠키가 있습니다. <br>
+                                    이러한 쿠키는 사용자가 웹사이트를 탐색하는데 필요한 몇 가지 활동을 수행합니다. <br>
+                                    * 메인화면 팝업의 '오늘 하루 그만보기' 체크 여부
+                                </p>
+                                <button class="detail-btn view-1">
+                                    <p class="btn-title">
+                                        자세히 보기
+                                    </p>
+                                    <div class="cir">
+                                        <i class="xi-arrow-right"></i>
+                                    </div>
+                                </button>
+
+                            </div>
+                            <div class="set-box">
+                                <div class="chk-wrap">
+                                    <p class="box-title">분석 쿠키</p>
+                                    <label for="check_2" class="checked-item">
+                                        <input type="checkbox" id="check_2" class="form-checkbox">
+                                        <span class="check-icon">
+                                            <i class="xi-check"></i>
+                                        </span>
+                                        <p class="check-title">[선택]</p>
+                                    </label>
+                                </div>
+                                <p class="box-info">
+                                    방문자의 홈페이지 이용 방식에 관한 정보를 수집하여 사이트를 개선하는데 도움을 주는 쿠키입니다. <br>
+                                    예를 들어, 방문자의 사용 기기, 접속 지역, 방문 시간 등의 정보를 익명으로 수집합니다. <br>
+                                    *Google Analytics(GA4), Microsoft Clarity 익명 수집 데이터
+                                </p>
+                                <button class="detail-btn view-2">
+                                    <p class="btn-title">
+                                        자세히 보기
+                                    </p>
+                                    <div class="cir">
+                                        <i class="xi-arrow-right"></i>
+                                    </div>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="close-btn">
+                        <img src="/images/close-icon.png" alt="">
+                    </button>
+
+                    <button class="line-btn send-btn">쿠키 설정 저장</button>
+                </div>
+            </div>
+            <!-- // -->
+
+            <!------------- 상세안내 팝업 -->
+            <!-- 필수 상세 팝업 -->
+            <div class="popup setPopup viewPopup view1Popup cookiPopupDefault" id="view1Popup" style="display:none;">
+                <div class="popup-content">
+                    <p class="set-title">쿠키 상세 안내</p>
+                    <div class="scroll-wrap">
+                        <p class="set-sub">
+                            * 메인 화면 팝업의 '오늘 하루 그만보기' 체크 여부
+                        </p>
+                        <div class="set-box-wrap">
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">사용 목적</p>
+                                    <p class="info">팝업의 오늘 하루 그만보기 기능 적용</p>
+                                </div>
+                            </div>
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">수집하는 쿠키</p>
+                                    <p class="info">popup</p>
+                                </div>
+                            </div>
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">사용 목적</p>
+                                    <p class="info">팝업의 오늘 하루 그만보기 기능 적용</p>
+                                </div>
+                            </div>
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">수집하는 데이터</p>
+                                    <p class="info">쿠키ID 및 Value</p>
+                                </div>
+                            </div>
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">보유 기간</p>
+                                    <p class="info">1일</p>
+                                </div>
+                            </div>
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">데이터 수신자</p>
+                                    <p class="info">없음(내부 보유)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="close-btn">
+                        <img src="/images/close-icon.png" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <!-- 분석 팝업 -->
+            <div class="popup setPopup viewPopup view2Popup cookiPopupDefault" id="view2Popup" style="display:none;">
+                <div class="popup-content">
+                    <p class="set-title">쿠키 상세 안내</p>
+                    <div class="scroll-wrap">
+                        <p class="set-sub">
+                            * Google Analytics(GA4), Microsoft Clarity 익명 수집 데이터
+                        </p>
+                        <div class="set-box-wrap">
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">사용 목적</p>
+                                    <p class="info">방문자 데이터 수집 및 처리</p>
+                                </div>
+                            </div>
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">수집하는 쿠키</p>
+                                    <p class="info">_ga_ga_container-id></p>
+                                </div>
+                            </div>
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">수집하는 데이터</p>
+                                    <p class="info">
+                                        사용자 수, 세션 통계, 대략적인 위치정보(IP), 브라우저 및 기기 정보 사이트 내 사용자 행동
+                                        *Google Analytics (GA4), MS Clarity 는 국가, 도시, 도시의 위도, 경도를 확인하기 위해
+                                        개별 IP 주소를 사용한 다음 로깅하거나 저장하지 않습니다.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">보유 기간</p>
+                                    <p class="info">24개월</p>
+                                </div>
+                            </div>
+                            <div class="set-box">
+                                <div class="info-wrap">
+                                    <p class="info-title">데이터 수신자</p>
+                                    <div class="info">
+                                        <p class="info">
+                                            Alphabet Inc., Google LLC, Google Ireland Limited
+                                        </p>
+                                        <p class="info mb48">
+                                            Microsoft Corporation
+                                        </p>
+                                        <p class="info mb48">
+                                            데이터 처리 회사의 개인정보 보호 정책 <br>
+                                            <a
+                                                href="https://policies.google.com/privacy?hl=en">https://policies.google.com/privacy?hl=en</a>
+                                            <br>
+                                            <a
+                                                href="https://privacy.microsoft.com/ko-kr/privacysupplement">https://privacy.microsoft.com/ko-kr/privacysupplement</a>
+                                        </p>
+                                        <p class="info mb48">
+                                            데이터 처리 회사의 개인정보 보호 정책 <br>
+                                            <a
+                                                href=" https://policies.google.com/privacy?hl=en">https://policies.google.com/privacy?hl=en</a>
+                                            <br>
+                                            <a
+                                                href="https://privacy.microsoft.com/ko-kr/privacysupplement">https://privacy.microsoft.com/ko-kr/privacysupplement</a>
+                                        </p>
+                                        <p class="info">
+                                            <a href="">https://tools.google.com/d/page/gaoptout?hl=en</a>을 방문하여 <br
+                                                class="pc">
+                                            브라우저에서 Google Analytics를 완전히 비활성화할 수 있습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="close-btn">
+                        <img src="/images/close-icon.png" alt="">
+                    </button>
+                </div>
+            </div>
+            <!-- // -->
+
             <section class="intro-section main-section1">
                 <div class="video-wrap">
-                    <video muted autoplay loop playsinline src="/video/main_section1.mp4"></video>
+                    <video muted autoplay loop playsinline preload="auto" src="/video/main_section1.mp4"></video>
                 </div>
                 <div class="content-wrap">
                     <div class="inner-wrap">
@@ -87,29 +340,42 @@
             </section>
 
             <div id="bound-one" class="intro-section scroll-bound">
-                <div class="black num1"></div>
 
                 <div class="content">
-                   
+
                     <div class="video-container">
                         <video muted preload autoplay playsinline src="/video/cube.mp4"></video>
+                        <div class="gradient-overlay"></div>
+                    </div>
+                    <div class="title-wrap">
+                        <p class="title title-1">
+                            복잡하고 어려운 <br>
+                            물류 산업
+                        </p>
+                        <p class="title title-2">
+                            더 쉽고 간편해질 수 없을까?
+                        </p>
+                    </div>
+
+                    <!-- <div class="video-container">
+                        <video muted preload autoplay playsinline src="/video/cube.mp4"></video>
+
                         <div class="img-wrap">
                             <img src="images/cube_bg3.png" alt="">
                         </div>
-                    </div>
+                    </div> -->
 
-                        <div class="title-wrap" >
-                            <p class="title title-1">
-                                복잡하고 어려운 <br>
-                                물류 산업
-                            </p>
-                            <p class="title title-2">
-                                더 쉽고 간편해질 수 없을까?
-                            </p>
+                    <!-- <div class="video-container">
+                        <video class="background-video" muted preload autoplay playsinline src="/video/cube.mp4"></video>
+                        <div class="img-wrap">
+                            <img src="images/cube_bg3.png" alt="Background Image">
                         </div>
+                    </div> -->
+
+
 
                 </div>
-                
+
 
             </div>
 
@@ -121,10 +387,10 @@
                 <div class="content-wrap">
                     <img class="logo eff-off" src="images/AoroaLabs_logo_w.svg" alt="">
                     <h3 class="mainTitle main-title2 eff-off">
-                        산업에 대한  <br class="mb">
+                        산업에 대한 <br class="mb">
                         깊은 이해와 기술 혁신으로 <br>
                         물류 산업의 미래를 <br class="mb">
-                        재구성합니다. 
+                        재구성합니다.
                     </h3>
                     <a class="btn btn-primary btn-main" href="/company.html">
                         <p class="btn-txt">회사소개 바로가기</p>
@@ -150,7 +416,7 @@
                             <img class="item-5" src="images/main_section4_obj5.svg" alt="">
                             <img class="item-6" src="images/main_section4_obj6.svg" alt="">
                             <img class="item-7" src="images/main_section4_obj7.svg" alt="">
-                            <img class="item-8" src="images/main_section4_obj7_1.png" alt="">
+                            <!-- <img class="item-8 active" src="images/main_section4_obj7_1.png" alt=""> -->
                             <img class="item-9 active" src="images/main_section4_obj8.svg" alt="">
                         </div>
                         <div class="img-group-wrap mb">
@@ -161,10 +427,10 @@
                             <img class="item-5" src="images/main_section4_obj5_m.svg" alt="">
                             <img class="item-6" src="images/main_section4_obj6_m.svg" alt="">
                             <img class="item-7" src="images/main_section4_obj7_m.svg" alt="">
-                            <img class="item-8" src="images/main_section4_obj7_1.png" alt="">
+                            <!-- <img class="item-8 active" src="images/main_section4_obj7_1.png" alt=""> -->
                             <img class="item-9 active" src="images/main_section4_obj8_m.svg" alt="">
                         </div>
-                    
+                        <img class="item-8" src="images/main_section4_obj7_1.png" alt="">
                     </div>
                 </div>
             </div>
@@ -175,7 +441,7 @@
                 </div>
                 <div class="inner-wrap">
                     <h3 class="mainTitle main-title5 eff-off">
-                        국제 물류를 위한  <br class="mb">
+                        국제 물류를 위한 <br class="mb">
                         단 하나의 플랫폼
                     </h3>
                     <img class="img-logo eff-off" src="images/horizon_logo.svg" alt="">
@@ -183,8 +449,8 @@
                         <p class="btn-txt">출시예정</p>
                     </a>
                     <div class="img-group-wrap eff-off2">
-                        <div class="img-item2">
-                            <img src="images/main_section5_obj.png" alt="">
+                        <div class="img-item2 search-img">
+                            <img src="images/main_section5_obj.jpg" alt="">
                         </div>
                     </div>
                     <a class="btn btn-primary link-btn eff-off" href="horizon.html">
@@ -192,7 +458,7 @@
                     </a>
                 </div>
             </section>
-            
+
             <section class="intro-section main-section6">
                 <div class="main-container">
                     <div class="tile-wrap top">
@@ -216,7 +482,7 @@
 
                         </div>
                     </div>
-                   
+
                     <div class="tile-wrap swiper-tile-wrap">
 
                         <div class="swiper tileSwiper">
@@ -293,13 +559,13 @@
                             <a class="btn btn-primary link-btn" href="/contact.html">
                                 <p class="btn-txt">CONTACT 바로가기</p>
                             </a>
-                    
+
                         </div>
                         <div class="le-wrap">
                             <div class="txt-wrap">
-                                <p class="info-txt"><span><i class="xi-mail-o icon"></i></span>recruit@aoroa.ai</p>
+                                <p class="info-txt"><span><i class="xi-mail-o icon"></i></span>support@aoroa.ai</p>
                                 <p class="info-txt"><span><i class="xi-call icon"></i></span>02.777.2536</p>
-                                <p class="info-txt"><span><i class="icon"></i> 010.5889.1425</p>
+                                <p class="info-txt"><span><i class="xi-call icon"></i></span>010.5889.1425</p>
                             </div>
                         </div>
                     </div>
@@ -315,6 +581,8 @@
     </div>
 
 
+    <!-- 별자리 -->
+    <!-- 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
         var item9 = document.querySelector('.img-group-wrap .item-9');
@@ -353,152 +621,646 @@
             }
         });
     });
-</script>
+</script> -->
 
+
+    <!-- 
 
 <script>
-    var swiper = new Swiper(".tileSwiper", {
-        slidesPerView: 4,
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        breakpoints: {
-            325: {
-                spaceBetween: 12,
-            },
-            1080: {
-                    spaceBetween: 30,
+    document.addEventListener('DOMContentLoaded', function () {
+            // 이미지 로드 완료 후 스크립트 실행
+            window.onload = function () {
+                var item9 = document.querySelector('.img-group-wrap .item-9');
+                item9.classList.add('active');
+
+                var isMobile = window.innerWidth < 1080;
+                var mainTitle = document.querySelector('#bound-two .mainTitle.main-title3');
+                var originalTitle = '물류 산업 참여자들을 위한 <br> 디지털 전환 솔루션 구축으로부터';
+
+                var handleScroll = function () {
+                    var innerWrap = document.querySelector('#bound-two');
+                    var items = document.querySelectorAll('.img-group-wrap .item-1, .img-group-wrap .item-2, .img-group-wrap .item-3, .img-group-wrap .item-4, .img-group-wrap .item-5, .img-group-wrap .item-6, .img-group-wrap .item-7, .img-group-wrap .item-8');
+                    var innerWrapRect = innerWrap.getBoundingClientRect();
+
+                    if (mainTitle) { // mainTitle 요소가 존재하는지 확인
+                        items.forEach((item, index) => {
+                            var itemThreshold = isMobile
+                                ? -index * (innerWrap.offsetHeight / (items.length * 3))  // 모바일에서는 더 빨리 활성화
+                                : -index * (innerWrap.offsetHeight / (items.length + 1));  // 데스크톱에서는 기존 값 사용
+
+                            if (innerWrapRect.top <= itemThreshold) {
+                                item.classList.add('active');
+                            } else {
+                                item.classList.remove('active');
+                            }
+                        });
+
+                        // 마지막 아이템(item-8)이 active인지 확인
+                        var lastItem = items[items.length - 1]; // item-8
+
+                        if (lastItem.classList.contains('active')) {
+                            mainTitle.innerHTML = '물류 산업 참여자들을 <br> 연결하기까지';
+                        } else if (innerWrapRect.top > 0) {
+                            mainTitle.innerHTML = originalTitle;
+                        }
+                    }
+                };
+
+                var throttle = function (func, limit) {
+                    let lastFunc;
+                    let lastRan;
+                    return function () {
+                        const context = this;
+                        const args = arguments;
+                        if (!lastRan) {
+                            func.apply(context, args);
+                            lastRan = Date.now();
+                        } else {
+                            clearTimeout(lastFunc);
+                            lastFunc = setTimeout(function () {
+                                if ((Date.now() - lastRan) >= limit) {
+                                    func.apply(context, args);
+                                    lastRan = Date.now();
+                                }
+                            }, limit - (Date.now() - lastRan));
+                        }
+                    }
+                };
+
+                // 스크롤 이벤트에 throttle 적용
+                window.addEventListener('scroll', throttle(handleScroll, 100));
             }
-        },
+        });
+</script>
+ -->
+
+
+    <!-- 기존버전 -->
+    <!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        window.onload = function () {
+            var item9 = document.querySelector('.img-group-wrap .item-9');
+            item9.classList.add('active');
+
+            var isMobile = window.innerWidth < 573; // 해상도 기준 573px 이하를 모바일로 간주
+            var mainTitle = document.querySelector('#bound-two .mainTitle.main-title3');
+            var originalTitle = '물류 산업 참여자들을 위한 <br> 디지털 전환 솔루션 구축으로부터';
+
+            var handleScroll = function () {
+                var innerWrap = document.querySelector('#bound-two');
+                var items = document.querySelectorAll('.img-group-wrap .item-1, .img-group-wrap .item-2, .img-group-wrap .item-3, .img-group-wrap .item-4, .img-group-wrap .item-5, .img-group-wrap .item-6, .img-group-wrap .item-7, .img-group-wrap .item-8');
+                var innerWrapRect = innerWrap.getBoundingClientRect();
+                var windowHeight = window.innerHeight;
+
+                if (mainTitle) {
+                    items.forEach((item, index) => {
+                        // PC 클래스가 있는 요소는 모바일 해상도에서 활성화되지 않도록 설정
+                        if (isMobile && item.classList.contains('pc')) {
+                            item.classList.remove('active');
+                            return;
+                        }
+
+                        var itemThreshold = isMobile
+                            ? innerWrapRect.top + (index * (innerWrap.offsetHeight / (items.length * 3)))
+                            : innerWrapRect.top + (index * (innerWrap.offsetHeight / (items.length + 1)));
+
+                        if (windowHeight >= itemThreshold) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+
+                    var lastItem = items[items.length - 1];
+                    var lastItemRect = lastItem.getBoundingClientRect();
+
+                    if (lastItem.classList.contains('active') && lastItemRect.top < windowHeight) {
+                        mainTitle.innerHTML = '물류 산업 참여자들을 <br> 연결하기까지';
+                    } else {
+                        mainTitle.innerHTML = originalTitle;
+                    }
+                }
+            };
+
+            var throttle = function (func, limit) {
+                let lastFunc;
+                let lastRan;
+                return function () {
+                    const context = this;
+                    const args = arguments;
+                    if (!lastRan) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    } else {
+                        clearTimeout(lastFunc);
+                        lastFunc = setTimeout(function () {
+                            if ((Date.now() - lastRan) >= limit) {
+                                func.apply(context, args);
+                                lastRan = Date.now();
+                            }
+                        }, limit - (Date.now() - lastRan));
+                    }
+                }
+            };
+
+            window.addEventListener('scroll', throttle(handleScroll, 100));
+            handleScroll(); // 페이지 로드 후 처음에 스크롤 핸들러 호출
+        }
     });
 </script>
+ -->
 
 
-<!-- 큐브 -->
+    <!-- 변경버전 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            window.onload = function () {
+                var item9 = document.querySelector('.img-group-wrap .item-9');
+                item9.classList.add('active');
+
+                var mainTitle = document.querySelector('#bound-two .mainTitle.main-title3');
+                var originalTitle = '물류 산업 참여자들을 위한 <br> 디지털 전환 솔루션 구축으로부터';
+                var newTitle = '물류 산업 참여자들을 <br> 연결하기까지';
+                var hasActivated = false;
+                var isTitleChanging = false; // title 변경
+
+                var changeTitle = function (titleElement, newText) {
+                    if (isTitleChanging) return;
+                    isTitleChanging = true;
+                    titleElement.classList.add('overlap');
+                    setTimeout(function () {
+                        titleElement.innerHTML = newText;
+                        titleElement.classList.remove('overlap');
+                        isTitleChanging = false;
+                    }, 100); // animation duration 
+                };
+
+                var handleScroll = function () {
+                    var innerWrap = document.querySelector('#bound-two');
+                    var items = document.querySelectorAll('.img-group-wrap .item-1, .img-group-wrap .item-2, .img-group-wrap .item-3, .img-group-wrap .item-4, .img-group-wrap .item-5, .img-group-wrap .item-6, .img-group-wrap .item-7');
+                    var item8 = document.querySelectorAll('.item-8');
+                    var innerWrapRect = innerWrap.getBoundingClientRect();
+                    var windowHeight = window.innerHeight;
+
+                    if (innerWrapRect.top <= 0 && innerWrapRect.bottom > 0) {
+                        if (mainTitle.innerHTML !== newTitle && !isTitleChanging) {
+                            changeTitle(mainTitle, newTitle);
+                        }
+                        if (!hasActivated) {
+                            items.forEach(item => item.classList.remove('active'));
+                            item9.classList.add('active');
+                            item8.forEach(el => {
+                                el.style.opacity = '0'; // item-8 숨기기
+                                el.style.transform = 'translate(-50%, -50%) scale(0.8)'; // item-8 초기 크기 설정
+                            });
+                        }
+
+                        if (window.scrollY >= innerWrap.offsetTop && !hasActivated) {
+                            setTimeout(() => {
+                                item8.forEach(el => {
+                                    el.style.opacity = '1'; // item-8 보이기
+                                    el.style.transform = 'translate(-50%, -50%) scale(1)'; // item-8 크기 원래대로
+                                });
+                            }, 50); // 50ms 후에 opacity와 transform 변화 시작
+                            items.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('active');
+                                }, index * 50);
+                            });
+
+                            hasActivated = true;
+                        }
+                    } else {
+                        if (mainTitle.innerHTML !== originalTitle && !isTitleChanging) {
+                            changeTitle(mainTitle, originalTitle);
+                        }
+                        items.forEach(item => item.classList.remove('active'));
+                        item9.classList.add('active');
+                        item8.forEach(el => {
+                            el.style.opacity = '0'; // item-8 숨기기
+                            el.style.transform = 'translate(-50%, -50%) scale(0.8)'; // item-8 초기 크기 설정
+                        });
+                        hasActivated = false;
+                    }
+                };
+
+                var throttle = function (func, limit) {
+                    let lastFunc;
+                    let lastRan;
+                    return function () {
+                        const context = this;
+                        const args = arguments;
+                        if (!lastRan) {
+                            func.apply(context, args);
+                            lastRan = Date.now();
+                        } else {
+                            clearTimeout(lastFunc);
+                            lastFunc = setTimeout(function () {
+                                if ((Date.now() - lastRan) >= limit) {
+                                    func.apply(context, args);
+                                    lastRan = Date.now();
+                                }
+                            }, limit - (Date.now() - lastRan));
+                        }
+                    };
+                };
+
+                var throttleSpeed = window.innerWidth <= 573 ? 10 : 100;
+                // 반응형 속도
+
+                window.addEventListener('scroll', throttle(handleScroll, throttleSpeed));
+                handleScroll();
+            }
+        });
+    </script>
+
+    <script>
+        var swiper = new Swiper(".tileSwiper", {
+            slidesPerView: 4,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                325: {
+                    spaceBetween: 12,
+                },
+                1080: {
+                    spaceBetween: 30,
+                }
+            },
+        });
+    </script>
+
+
+    <!-- 큐브 -->
+    <script>
+        const registerVideo = (boundSelector, videoSelector) => {
+            const bound = document.querySelector(boundSelector);
+            const video = document.querySelector(videoSelector);
+            const textTitle1 = bound.querySelector('.title-1');
+            const textTitle2 = bound.querySelector('.title-2');
+
+            textTitle1.classList.add('text-title');
+            textTitle2.classList.add('text-title');
+
+            let previousScrollY = window.scrollY;
+            let isScrolling = false;
+
+            const scrollVideo = () => {
+                const duration = video.duration;
+                if (duration) {
+                    const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+                    const rawPercentScrolled = Math.min(Math.max((window.scrollY - distanceFromTop) / (bound.scrollHeight - window.innerHeight) * 2, 0), 1);
+                    video.currentTime = duration * rawPercentScrolled;
+
+                    if (rawPercentScrolled >= 1) {
+                        video.currentTime = duration - 0.1;
+                    }
+                }
+            };
+
+            const handleScroll = () => {
+                if (!isScrolling) {
+                    window.requestAnimationFrame(() => {
+                        const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+                        const currentScrollY = window.scrollY;
+                        const isScrollingDown = currentScrollY > previousScrollY;
+                        const scrolledPastThreshold = currentScrollY > distanceFromTop + 300;
+                        previousScrollY = currentScrollY;
+
+                        if (window.scrollY > distanceFromTop) {
+                            if (scrolledPastThreshold && isScrollingDown) {
+                                textTitle1.style.opacity = '0';
+                                textTitle2.style.opacity = '1';
+                                textTitle2.style.display = 'block';
+                            } else if (!scrolledPastThreshold && !isScrollingDown) {
+                                textTitle1.style.opacity = '1';
+                                textTitle2.style.opacity = '0';
+                                textTitle2.style.display = 'none';
+                            }
+                        } else {
+                            textTitle1.style.opacity = '1';
+                            textTitle2.style.opacity = '0';
+                            textTitle2.style.display = 'none';
+                        }
+
+                        scrollVideo();
+                        isScrolling = false;
+                    });
+                    isScrolling = true;
+                }
+            };
+
+            textTitle1.style.opacity = '1';
+            textTitle1.style.display = 'block';
+            textTitle2.style.opacity = '0';
+            textTitle2.style.display = 'none';
+
+            window.addEventListener('scroll', handleScroll);
+        };
+
+        registerVideo("#bound-one", "#bound-one video");
+    </script>
+
+    <!-- 
 <script>
-const registerVideo = (bound, video) => {
-    bound = document.querySelector(bound);
-    video = document.querySelector(video);
-    const textTitle1 = bound.querySelector('.title-1');
-    const textTitle2 = bound.querySelector('.title-2');
+    const registerVideo = (bound, video) => {
+            bound = document.querySelector(bound);
+            video = document.querySelector(video);
+            const textTitle1 = bound.querySelector('.title-1');
+            const textTitle2 = bound.querySelector('.title-2');
 
-    // CSS에서 transition을 통해 부드러운 효과 설정
-    textTitle1.classList.add('text-title');
-    textTitle2.classList.add('text-title');
+            textTitle1.classList.add('text-title');
+            textTitle2.classList.add('text-title');
 
-    let sectionReached = false;
-    let previousScrollY = window.scrollY;
+            let sectionReached = false;
+            let previousScrollY = window.scrollY;
 
-    const scrollVideo = () => {
-        if (video.duration) {
+            const scrollVideo = () => {
+                if (video.duration) {
+                    const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+                    let rawPercentScrolled = (window.scrollY - distanceFromTop) / (bound.scrollHeight - window.innerHeight);
+                    rawPercentScrolled *= 2;
+                    const percentScrolled = Math.min(Math.max(rawPercentScrolled, 0), 1);
+                    video.currentTime = video.duration * percentScrolled;
+                }
+                requestAnimationFrame(scrollVideo);
+            };
+
+            const handleScroll = () => {
+                const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+                const currentScrollY = window.scrollY;
+                const isScrollingDown = currentScrollY > previousScrollY;
+                const isScrollingUp = currentScrollY < previousScrollY;
+                previousScrollY = currentScrollY;
+
+                if (window.scrollY > distanceFromTop) {
+                    sectionReached = true;
+                } else {
+                    sectionReached = false;
+                }
+
+                if (sectionReached) {
+                    const scrolledPastThreshold = window.scrollY > distanceFromTop + 300;
+
+                    if (scrolledPastThreshold && isScrollingDown) {
+                        textTitle1.style.opacity = '0';
+                        textTitle2.style.opacity = '1';
+                        textTitle2.style.display = 'block';
+                    } else if (!scrolledPastThreshold && isScrollingUp) {
+                        textTitle1.style.opacity = '1';
+                        textTitle1.style.display = 'block';
+                        textTitle2.style.opacity = '0';
+                        textTitle2.style.display = 'none';
+                    }
+                } else {
+                    textTitle1.style.opacity = '1';
+                    textTitle1.style.display = 'block';
+                    textTitle2.style.opacity = '0';
+                    textTitle2.style.display = 'none';
+                }
+            };
+
+            video.addEventListener('ended', () => {
+                video.currentTime = 0;
+            });
+
+            textTitle1.style.opacity = '1';
+            textTitle1.style.display = 'block';
+            textTitle2.style.opacity = '0';
+            textTitle2.style.display = 'none';
+
+            requestAnimationFrame(scrollVideo);
+            window.addEventListener('scroll', handleScroll);
+        };
+
+       
+        registerVideo("#bound-one", "#bound-one video");
+
+
+
+</script>
+ -->
+
+
+    <!-- <script>
+    const registerVideo = (bound, video) => {
+            bound = document.querySelector(bound);
+            video = document.querySelector(video);
+            const textTitle1 = bound.querySelector('.title-1');
+            const textTitle2 = bound.querySelector('.title-2');
+
+            // CSS에서 transition을 통해 부드러운 효과 설정
+            textTitle1.classList.add('text-title');
+            textTitle2.classList.add('text-title');
+
+            let sectionReached = false;
+            let previousScrollY = window.scrollY;
+
+            const scrollVideo = () => {
+                if (video.duration) {
+                    const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+                    let rawPercentScrolled = (window.scrollY - distanceFromTop) / (bound.scrollHeight - window.innerHeight);
+
+                    // 비율을 2배로 증가
+                    rawPercentScrolled *= 2;
+                    const percentScrolled = Math.min(Math.max(rawPercentScrolled, 0), 1);
+
+                    // 동영상 재생 위치 설정
+                    if (!video.ended) {
+                        video.currentTime = video.duration * percentScrolled;
+                    }
+
+                    if (percentScrolled >= 1 && !video.ended) {
+                        video.ended = true;
+                        video.pause();
+                    } else if (percentScrolled < 1 && video.ended) {
+                        video.ended = false;
+                        video.play();
+                    }
+                }
+                requestAnimationFrame(scrollVideo);
+            };
+
+            const handleScroll = () => {
+                const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+                const currentScrollY = window.scrollY;
+                const isScrollingDown = currentScrollY > previousScrollY;
+                const isScrollingUp = currentScrollY < previousScrollY;
+                previousScrollY = currentScrollY;
+
+                if (window.scrollY > distanceFromTop) {
+                    sectionReached = true;
+                } else {
+                    sectionReached = false;
+                }
+
+                if (sectionReached) {
+                    const scrolledPastThreshold = window.scrollY > distanceFromTop + 300;
+
+                    if (scrolledPastThreshold && isScrollingDown) {
+                        textTitle1.style.opacity = '0';
+                        textTitle2.style.opacity = '1';
+                        textTitle2.style.display = 'block';
+                    } else if (!scrolledPastThreshold && isScrollingUp) {
+                        textTitle1.style.opacity = '1';
+                        textTitle1.style.display = 'block';
+                        textTitle2.style.opacity = '0';
+                        textTitle2.style.display = 'none';
+                    }
+                } else {
+                    textTitle1.style.opacity = '1';
+                    textTitle1.style.display = 'block';
+                    textTitle2.style.opacity = '0';
+                    textTitle2.style.display = 'none';
+                }
+            };
+
+            // 초기 설정
+            textTitle1.style.opacity = '1'; // 타이틀1 처음부터 보이게 설정
+            textTitle1.style.display = 'block';
+            textTitle2.style.opacity = '0';
+            textTitle2.style.display = 'none';
+
+            requestAnimationFrame(scrollVideo);
+            window.addEventListener('scroll', handleScroll);
+        };
+
+        registerVideo("#bound-one", "#bound-one video");
+ </script> -->
+    <!-- 
+ <script>
+    const registerVideo = (bound, video) => {
+        bound = document.querySelector(bound);
+        video = document.querySelector(video);
+        const textTitle1 = bound.querySelector('.title-1');
+        const textTitle2 = bound.querySelector('.title-2');
+
+        // CSS에서 transition을 통해 부드러운 효과 설정
+        textTitle1.classList.add('text-title');
+        textTitle2.classList.add('text-title');
+
+        let previousScrollY = window.scrollY;
+
+        const scrollVideo = () => {
+            if (video.duration) {
+                const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
+                let rawPercentScrolled = (window.scrollY - distanceFromTop) / (bound.scrollHeight - window.innerHeight);
+
+                // 비율을 2배로 증가
+                rawPercentScrolled *= 2;
+                const percentScrolled = Math.min(Math.max(rawPercentScrolled, 0), 1);
+
+                // 동영상 재생 위치 설정
+                if (!video.ended) {
+                    video.currentTime = video.duration * percentScrolled;
+                }
+
+                if (percentScrolled >= 1 && !video.ended) {
+                    video.ended = true;
+                    video.pause();
+                } else if (percentScrolled < 1 && video.ended) {
+                    video.ended = false;
+                    video.play();
+                }
+            }
+            requestAnimationFrame(scrollVideo);
+        };
+
+        const handleScroll = () => {
             const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
-            let rawPercentScrolled = (window.scrollY - distanceFromTop) / (bound.scrollHeight - window.innerHeight);
+            const currentScrollY = window.scrollY;
+            const isScrollingDown = currentScrollY > previousScrollY;
+            const isScrollingUp = currentScrollY < previousScrollY;
+            previousScrollY = currentScrollY;
 
-            // 비율을 2배로 증가
-            rawPercentScrolled *= 2;
-            const percentScrolled = Math.min(Math.max(rawPercentScrolled, 0), 1);
+            if (window.scrollY > distanceFromTop) {
+                const scrolledPastThreshold = window.scrollY > distanceFromTop + 300;
 
-            // 동영상 재생 위치 설정
-            video.currentTime = video.duration * percentScrolled;
-        }
-        requestAnimationFrame(scrollVideo);
-    };
-
-    const handleScroll = () => {
-        const distanceFromTop = window.scrollY + bound.getBoundingClientRect().top;
-        const currentScrollY = window.scrollY;
-        const isScrollingDown = currentScrollY > previousScrollY;
-        const isScrollingUp = currentScrollY < previousScrollY;
-        previousScrollY = currentScrollY;
-
-        if (window.scrollY > distanceFromTop) {
-            sectionReached = true;
-        } else {
-            sectionReached = false;
-        }
-
-        if (sectionReached) {
-            const scrolledPastThreshold = window.scrollY > distanceFromTop + 300;
-
-            if (scrolledPastThreshold && isScrollingDown) {
-                textTitle1.style.opacity = '0';
-                textTitle2.style.opacity = '1';
-                textTitle2.style.display = 'block';
-            } else if (!scrolledPastThreshold && isScrollingUp) {
+                if (scrolledPastThreshold && isScrollingDown) {
+                    textTitle1.style.opacity = '0';
+                    textTitle2.style.opacity = '1';
+                    textTitle2.style.display = 'block';
+                } else if (!scrolledPastThreshold && isScrollingUp) {
+                    textTitle1.style.opacity = '1';
+                    textTitle1.style.display = 'block';
+                    textTitle2.style.opacity = '0';
+                    textTitle2.style.display = 'none';
+                }
+            } else {
                 textTitle1.style.opacity = '1';
                 textTitle1.style.display = 'block';
                 textTitle2.style.opacity = '0';
                 textTitle2.style.display = 'none';
             }
-        } else {
-            textTitle1.style.opacity = '1';
-            textTitle1.style.display = 'block';
-            textTitle2.style.opacity = '0';
-            textTitle2.style.display = 'none';
-        }
+        };
+
+        // 초기 설정
+        textTitle1.style.opacity = '1'; // 타이틀1 처음부터 보이게 설정
+        textTitle1.style.display = 'block';
+        textTitle2.style.opacity = '0';
+        textTitle2.style.display = 'none';
+
+        requestAnimationFrame(scrollVideo);
+        window.addEventListener('scroll', handleScroll);
     };
 
-    // 초기 설정
-    textTitle1.style.opacity = '1'; // 타이틀1 처음부터 보이게 설정
-    textTitle1.style.display = 'block';
-    textTitle2.style.opacity = '0';
-    textTitle2.style.display = 'none';
+    registerVideo("#bound-one", "#bound-one video");
+</script> -->
 
-    requestAnimationFrame(scrollVideo);
-    window.addEventListener('scroll', handleScroll);
-};
 
-registerVideo("#bound-one", "#bound-one video");
-</script>
 
-<!-- 쿠키모달 -->
-<script>
-   document.addEventListener('DOMContentLoaded', function () {
-        var popup = document.getElementById('popup');
-        var allBtn = document.getElementById('allBtn');
-        var setBtn = document.querySelector('.set-btn');
-        var closeBtns = document.querySelectorAll('.close-btn');
-        var setPopup = document.getElementById('setPopup');
 
-        function updateNoScrollClass() {
-            if (popup.style.display === 'block' || setPopup.style.display === 'block') {
-                document.body.classList.add('no-scroll');
-            } else {
-                document.body.classList.remove('no-scroll');
+
+
+    <!-- 쿠키모달 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var popup = document.getElementById('popup');
+            var allBtn = document.getElementById('allBtn');
+            var setBtn = document.querySelector('.set-btn');
+            var closeBtns = document.querySelectorAll('.close-btn');
+            var setPopup = document.getElementById('setPopup');
+
+            function updateNoScrollClass() {
+                if (popup.style.display === 'block' || setPopup.style.display === 'block') {
+                    document.html.classList.add('no-scroll');
+                } else {
+                    document.html.classList.remove('no-scroll');
+                }
             }
-        }
 
-        function closePopup() {
-            popup.style.display = 'none';
+            function closePopup() {
+                popup.style.display = 'none';
+                updateNoScrollClass();
+            }
+
+            // Initial check to add no-scroll if popup is already visible
             updateNoScrollClass();
-        }
 
-        // Initial check to add no-scroll if popup is already visible
-        updateNoScrollClass();
+            allBtn.addEventListener('click', closePopup);
 
-        allBtn.addEventListener('click', closePopup);
-
-        setBtn.addEventListener('click', function () {
-            popup.style.display = 'none';
-            setPopup.style.display = 'block';
-            updateNoScrollClass();
-        });
-
-        closeBtns.forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                this.parentElement.parentElement.style.display = 'none';
+            setBtn.addEventListener('click', function () {
+                popup.style.display = 'none';
+                setPopup.style.display = 'block';
                 updateNoScrollClass();
             });
-        });
 
-        // Optional: Monitor changes in popup visibility
-        const observer = new MutationObserver(updateNoScrollClass);
-        observer.observe(popup, { attributes: true, attributeFilter: ['style'] });
-        observer.observe(setPopup, { attributes: true, attributeFilter: ['style'] });
-    });
+            closeBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    this.parentElement.parentElement.style.display = 'none';
+                    updateNoScrollClass();
+                });
+            });
+
+            // Optional: Monitor changes in popup visibility
+            const observer = new MutationObserver(updateNoScrollClass);
+            observer.observe(popup, { attributes: true, attributeFilter: ['style'] });
+            observer.observe(setPopup, { attributes: true, attributeFilter: ['style'] });
+        });
         document.addEventListener('DOMContentLoaded', function () {
             var view1Btn = document.querySelector('.setPopup .view-1');
             var view2Btn = document.querySelector('.setPopup .view-2');
@@ -508,17 +1270,17 @@ registerVideo("#bound-one", "#bound-one video");
 
             function closePopup(popup) {
                 popup.style.display = 'none';
-                document.body.classList.remove('no-scroll');
+                document.html.classList.remove('no-scroll');
             }
 
             view1Btn.addEventListener('click', function () {
                 view1Popup.style.display = 'block';
-                document.body.classList.add('no-scroll');
+                document.html.classList.add('no-scroll');
             });
 
             view2Btn.addEventListener('click', function () {
                 view2Popup.style.display = 'block';
-                document.body.classList.add('no-scroll');
+                document.html.classList.add('no-scroll');
             });
 
             closeBtns.forEach(function (btn) {
@@ -537,43 +1299,99 @@ registerVideo("#bound-one", "#bound-one video");
             setBtn.addEventListener('click', function () {
                 popup.style.display = 'none';
                 setPopup.style.display = 'block';
-                document.body.classList.add('no-scroll');
+                document.html.classList.add('no-scroll');
             });
 
             closeBtns.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     this.parentElement.parentElement.style.display = 'none';
-                    document.body.classList.remove('no-scroll');
+                    document.html.classList.remove('no-scroll');
                 });
             });
         });
-</script>
+    </script>
 
-
-<!-- 메인 기본 팝업 -->
-<script>
-    document.querySelectorAll(".pop-parent .btn-toggle").forEach(function (btnToggle) {
-        btnToggle.addEventListener("click", function () {
-            document.querySelector(".pop-parent").classList.toggle("active");
+    <script>
+        document.querySelector('.cookiPopup .set-btn').addEventListener('click', function () {
+            document.documentElement.classList.add('no-scroll');
         });
-    });
 
-    document.getElementById("oneday_check").addEventListener("click", function () {
-        document.querySelector(".pop-parent").classList.add("close");
-    });
+        document.querySelector('.setPopup .close-btn').addEventListener('click', function () {
+            document.documentElement.classList.remove('no-scroll');
+        });
 
-    var swiper5 = new Swiper(".pop-parent .popupSwiper", {
-        autoplay: {
-            delay: 3000,
-        },
-        pagination: {
-            el: '.pop-parent .swiper-pagination',
-        },
-        loop: true,
-    });
-</script>
+        document.querySelector('.setPopup .send-btn').addEventListener('click', function () {
+            document.documentElement.classList.remove('no-scroll');
+        });
+
+        document.querySelector('.cookiPopup .all-btn').addEventListener('click', function () {
+            document.documentElement.classList.remove('no-scroll');
+            document.querySelector('.cookiPopup').style.display = 'none';
+        });
+
+    </script>
+
+
+    <!-- 메인 기본 팝업 -->
+    <script>
+        document.querySelectorAll(".pop-parent .btn-toggle").forEach(function (btnToggle) {
+            btnToggle.addEventListener("click", function () {
+                document.querySelector(".pop-parent").classList.toggle("active");
+            });
+        });
+
+        document.getElementById("oneday_check").addEventListener("click", function () {
+            document.querySelector(".pop-parent").classList.add("close");
+        });
+
+        var swiper5 = new Swiper(".pop-parent .popupSwiper", {
+            autoplay: {
+                delay: 3000,
+            },
+            pagination: {
+                el: '.pop-parent .swiper-pagination',
+            },
+            loop: true,
+        });
+    </script>
+
+
+    <!-- 전체 스크롤 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            if (isIOS) {
+                var style = document.createElement('style');
+                style.innerHTML = `
+                .scroll-wrap::-webkit-scrollbar,
+                html::-webkit-scrollbar {
+                    width: 24px !important;
+                }
+
+                .scroll-wrap::-webkit-scrollbar-track,
+                html::-webkit-scrollbar-track {
+                    background-color: #404040 !important;
+                }
+
+                .scroll-wrap::-webkit-scrollbar-thumb,
+                html::-webkit-scrollbar-thumb {
+                    background-color: #000 !important;
+                    border: 4px solid #404040 !important;
+                    border-radius: 10px !important;
+                }
+
+                .scroll-wrap,
+                html {
+                    -webkit-overflow-scrolling: touch !important;
+                }
+            `;
+                document.head.appendChild(style);
+            }
+        });
+    </script>
 
 
 
 </body>
+
 </html>

@@ -21,23 +21,25 @@
     <meta name="theme-color" content="#ffffff">
     <script src="/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+
 </head>
 
 <body>
     <div id="wrap">
-    
+
         <header id="header" class="main-header"></header>
 
         <main id="main" class="main">
-            
+
 
             <section class="detailSection">
                 <div class="container">
-                    
+
                     <div class="heade-wrap">
                         <p class="title">
-                            In fact, the HTML standard only sets out a broad framework for how HTML should be displayed and does not provide
+                            In fact, the HTML standard only sets out a broad framework for how HTML should be displayed
+                            and does not provide
                             detailed explanations.
                         </p>
                         <div class="info-wrap">
@@ -54,23 +56,23 @@
                     <div class="content-wrap">
                         <!-- 사용자가 입력한 내용이 들어옵니다. -->
                         <!-- 테스트 내용 -->
-                           <p style="text-align: center;">
+                        <p style="text-align: center;">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
                             Ut enim ad minim veniam, quis nostrud <br> exercitation ullamco laboris nisi ut aliquip
                             ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>
                             cillum dolore eu fugiat nulla pariatur. <br>Excepteur sint occaecat cupidatat non proident,
                             sunt in culpa qui officia deserunt mollit anim id est laborum.
-                           </p>
-                           <img src="images/TEST_web.jpg" alt="테스트이미지" style="margin-top: 120px;">
+                        </p>
+                        <img src="images/TEST_web.jpg" alt="테스트이미지" style="margin-top: 120px;">
 
                         <!-- // -->
-                        
+
                     </div>
 
                 </div>
             </section>
-        
+
         </main>
 
         <footer id="footer"></footer>
@@ -78,37 +80,38 @@
 
     </div>
 
-  <script>
-    // 공지사항 형식 선택 버튼
-    const formatBtnList = document.querySelectorAll('.formatBtn');
-    const boardWrap = document.querySelector('.board.board-wrap');
+    <script>
+        // 공지사항 형식 선택 버튼
+        const formatBtnList = document.querySelectorAll('.formatBtn');
+        const boardWrap = document.querySelector('.board.board-wrap');
 
-    formatBtnList.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            this.classList.add('active');
-            formatBtnList.forEach(function (otherBtn) {
-                if (otherBtn !== btn) {
-                    otherBtn.classList.remove('active');
+        formatBtnList.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                this.classList.add('active');
+                formatBtnList.forEach(function (otherBtn) {
+                    if (otherBtn !== btn) {
+                        otherBtn.classList.remove('active');
+                    }
+                });
+
+                const albumBtn = document.querySelector('.formatBtn.list');
+                if (albumBtn.classList.contains('active')) {
+                    boardWrap.classList.add('listType');
+                } else {
+                    boardWrap.classList.remove('listType');
                 }
             });
+        });
 
-            const albumBtn = document.querySelector('.formatBtn.list');
-            if (albumBtn.classList.contains('active')) {
-                boardWrap.classList.add('listType');
-            } else {
+        // 1024이하 listType 삭제
+        window.addEventListener('resize', function () {
+            const windowWidth = window.innerWidth;
+            if (windowWidth < 1024) {
                 boardWrap.classList.remove('listType');
             }
         });
-    });
-
-    // 1024이하 listType 삭제
-    window.addEventListener('resize', function () {
-        const windowWidth = window.innerWidth;
-        if (windowWidth < 1024) {
-            boardWrap.classList.remove('listType');
-        }
-    });
-</script>
+    </script>
 
 </body>
+
 </html>
